@@ -1,0 +1,20 @@
+import heapq as hq
+
+heap = []
+
+def insert(num: int):
+    hq.heappush(heap,num)
+
+def extract():
+    print(-1 * hq.heappop(heap))
+
+while True:
+
+    msg = list(input().split())
+
+    if msg[0] == 'insert':
+        insert(-1 * int(msg[1]))
+    elif msg[0] == 'extract':
+        extract()
+    elif msg[0] == 'end':
+        break
