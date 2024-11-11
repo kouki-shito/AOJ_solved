@@ -1,0 +1,32 @@
+n,m = map(int,input().split())
+G = []
+for i in range(n):
+    gr = list(input())
+    G.append(gr)
+    
+start = (2,2)
+# (height,width)
+direc = [(1,0),(-1,0),(0,-1),(0,1)]
+
+dis = 0
+
+def dfs(h,w):
+    global dis
+    dis += 1
+    for d in direc:
+        next_h = h + d[0]
+        next_w = w + d[1]
+        if next_h < 0 and next_h > n:
+            continue
+        if next_w < 0 and next_w > m:
+            continue
+        if G[next_h][next_w] == '-' or G[next_h][next_w] != '#':
+            continue
+        else:
+            G[h][w] = '-'
+            dfs(next_h,next_w)
+    G[h][w] = '-'
+    print(dis)
+
+dfs(start[0],start[1])
+        
